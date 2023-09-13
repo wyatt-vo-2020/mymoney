@@ -1,1 +1,1 @@
-export const PUBLIC_DEFAULT = "default";
+export const PUBLIC_LAYOUT = "default";

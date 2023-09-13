@@ -6,13 +6,13 @@
 <script>
 import { useRoute } from "vue-router";
 import { computed } from "vue";
-import { PUBLIC_LAYOUT } from "@/constants";
+import { PUBLIC_LAYOUT } from "./constants/index";
 export default {
   setup() {
     const route = useRoute();
     console.log(route);
     return {
-      layout: computed(() => route.meta.layout || PUBLIC_LAYOUT + "-layout"),
+      layout: computed(() => (route.meta.layout || PUBLIC_LAYOUT) + "-layout"),
     };
   },
 };
