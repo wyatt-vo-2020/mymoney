@@ -23,3 +23,8 @@ yarn lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 # mymoney
+
+# 1. add .editorconfig file
+# 2. Install tailwind CSS
+yarn add --dev tailwindcss@latest postcss@latest autoprefixer@latest
+npx tailwindcss init -p
