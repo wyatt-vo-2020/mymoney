@@ -28,3 +28,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 # 2. Install tailwind CSS
 yarn add --dev tailwindcss@latest postcss@latest autoprefixer@latest
 npx tailwindcss init -p
+# 3. Add font from Gg
+# 4. Add global css
+# 5. Add layout for register and login page
+# 6. Add auth page containing logo
+# 7. Add firebase
+yarn add firebase
