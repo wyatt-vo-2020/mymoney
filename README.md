@@ -34,3 +34,4 @@ npx tailwindcss init -p
 # 6. Add auth page containing logo
 # 7. Add firebase
 yarn add firebase
+# 8. Register user using firebase
