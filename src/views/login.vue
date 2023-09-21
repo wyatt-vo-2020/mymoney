@@ -70,13 +70,17 @@
 <script>
 import { ref } from "vue";
 import { useSignIn } from "@/composables/useSignIn";
+import { useRouter } from "vue-router";
+
 export default {
   setup() {
     const email = ref("");
     const password = ref("");
     const { error, isPending, signin } = useSignIn();
+    const router = useRouter();
     async function onSubmit() {
       await signin(email.value, password.value);
+      if (!error.value) router.push({ name: "home", params: {} });
     }
     return { email, password, onSubmit, error, isPending };
   },
