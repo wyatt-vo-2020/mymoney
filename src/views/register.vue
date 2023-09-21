@@ -53,7 +53,7 @@
           </button>
           <button
             v-else
-            class="py-3 text-center w-full bg-primary text-white font-bold rouded bg-gray-800 cursor-not-allowed"
+            class="py-3 text-center w-full text-white font-bold rouded bg-gray-800 cursor-not-allowed"
             type="button"
             disable
           >
