@@ -9,7 +9,7 @@ const routes = [
       layout: "default",
     },
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/index.vue"),
+      import(/* webpackChunkName: "home" */ "../views/index.vue"),
   },
   {
     path: "/register",
@@ -17,11 +17,8 @@ const routes = [
     meta: {
       layout: "auth",
     },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/register.vue"),
+      import(/* webpackChunkName: "register" */ "../views/register.vue"),
   },
   {
     path: "/login",
@@ -29,11 +26,14 @@ const routes = [
     meta: {
       layout: "auth",
     },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/login.vue"),
+      import(/* webpackChunkName: "login" */ "../views/register.vue"),
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    component: () =>
+      import(/* webpackChunkName: "profile" */ "../views/profile.vue"),
   },
 ];
 
