@@ -39,3 +39,5 @@ yarn add firebase
 # 10. Go to home page after register/login
 # 11. Layout for profile page
 # 12. Logout function
+# 13. UI for navigation bottom
+# 14. UI for navigation header
