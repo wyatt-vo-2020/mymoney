@@ -80,7 +80,7 @@ export default {
     const router = useRouter();
     async function onSubmit() {
       await signin(email.value, password.value);
-      if (!error.value) router.push({ name: "home", params: {} });
+      if (!error.value) router.push({ name: "profile", params: {} });
     }
     return { email, password, onSubmit, error, isPending };
   },

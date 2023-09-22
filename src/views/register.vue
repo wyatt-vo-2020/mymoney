@@ -92,7 +92,7 @@ export default {
     const router = useRouter();
     async function onSubmit() {
       await signup(email.value, password.value, fullName.value);
-      if (!error.value) router.push({ name: "home", params: {} });
+      if (!error.value) router.push({ name: "profile", params: {} });
     }
     return { fullName, email, password, error, isPending, onSubmit };
   },
