@@ -12,8 +12,12 @@
             size="xs"
           />
         </div>
-        <div class="font-bold text-2xl text-primary mt-3">Le Van A</div>
-        <p class="font-semibold text-gray-400 mt-1">levana@gmail.com</p>
+        <div v-if="user" class="font-bold text-2xl text-primary mt-3">
+          {{ user.displayName }}
+        </div>
+        <p v-if="user" class="font-semibold text-gray-400 mt-1">
+          {{ user.email }}
+        </p>
       </div>
     </div>
   </div>
@@ -33,7 +37,7 @@
               :key="profileOption.name"
             >
               <router-link
-                to="profileOption.route"
+                :to="profileOption.route"
                 class="flex justify-between items-center py-3"
               >
                 <div
@@ -56,51 +60,16 @@
 </template>
 <script>
 import { reactive } from "vue";
+import { PROFILE_OPTIONS } from "@/constants";
+import { useUser } from "@/composables/useUser";
+
 export default {
   setup() {
-    const profileOptions = reactive([
-      {
-        name: "My Wallet",
-        icon: "t2ico-wallet",
-        route: {
-          name: "home",
-          params: {},
-        },
-      },
-      {
-        name: "Tools",
-        icon: "t2ico-ticket-star",
-        route: {
-          name: "home",
-          params: {},
-        },
-      },
-      {
-        name: "Privacy",
-        icon: "t2ico-lock",
-        route: {
-          name: "home",
-          params: {},
-        },
-      },
-      {
-        name: "About",
-        icon: "t2ico-info-square",
-        route: {
-          name: "home",
-          params: {},
-        },
-      },
-      {
-        name: "Logout",
-        icon: "t2ico-logout",
-        route: {
-          name: "home",
-          params: {},
-        },
-      },
-    ]);
-    return { profileOptions };
+    const profileOptions = reactive(PROFILE_OPTIONS);
+    const { getUser } = useUser();
+    const { user } = getUser();
+
+    return { profileOptions, user };
   },
 };
 </script>

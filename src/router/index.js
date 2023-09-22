@@ -27,13 +27,19 @@ const routes = [
       layout: "auth",
     },
     component: () =>
-      import(/* webpackChunkName: "login" */ "../views/register.vue"),
+      import(/* webpackChunkName: "login" */ "../views/login.vue"),
   },
   {
     path: "/profile",
     name: "profile",
     component: () =>
       import(/* webpackChunkName: "profile" */ "../views/profile.vue"),
+  },
+  {
+    path: "/logout",
+    name: "logout",
+    component: () =>
+      import(/* webpackChunkName: "logout" */ "../views/logout.vue"),
   },
 ];
 

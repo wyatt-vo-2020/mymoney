@@ -37,3 +37,5 @@ yarn add firebase
 # 8. Register user using firebase
 # 9. Login with firebase
 # 10. Go to home page after register/login
+# 11. Layout for profile page
+# 12. Logout function
