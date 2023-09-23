@@ -6,7 +6,7 @@
     <div class="container mx-auto px-8 h-full">
       <ul class="flex justify-between h-full items-center">
         <li v-for="navItem in navItems" :key="navItem.name">
-          <router-link to="/">
+          <router-link :to="{ name: navItem.name, param: {} }">
             <i class="t2ico text-2xl" :class="navItem.icon"></i>
           </router-link>
         </li>
@@ -16,30 +16,10 @@
 </template>
 <script>
 import { reactive } from "vue";
+import { NAV_BOTTOM_ITEMS } from "@/constants";
 export default {
   setup() {
-    const navItems = reactive([
-      {
-        icon: "t2ico-category",
-        text: "Home",
-        name: "home",
-      },
-      {
-        icon: "t2ico-chart",
-        text: "Chart",
-        name: "home",
-      },
-      {
-        icon: "t2ico-presentation",
-        text: "Budget",
-        name: "home",
-      },
-      {
-        icon: "t2ico-profile",
-        text: "Profile",
-        name: "profile",
-      },
-    ]);
+    const navItems = reactive(NAV_BOTTOM_ITEMS);
     return { navItems };
   },
 };
@@ -65,5 +45,11 @@ footer#footer::after {
   font-family: "t2ico";
   left: 50%;
   transform: translateX(-50%);
+}
+footer#footer ul li :nth-child(2) {
+  margin-right: 10%;
+}
+footer#footer ul li :nth-child(3) {
+  margin-left: 10%;
 }
 </style>

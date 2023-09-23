@@ -41,3 +41,25 @@ export const PROFILE_OPTIONS = [
     },
   },
 ];
+export const NAV_BOTTOM_ITEMS = [
+  {
+    icon: "t2ico-category",
+    text: "Home",
+    name: "home",
+  },
+  {
+    icon: "t2ico-chart",
+    text: "Chart",
+    name: "report",
+  },
+  {
+    icon: "t2ico-presentation",
+    text: "Budget",
+    name: "budget",
+  },
+  {
+    icon: "t2ico-profile",
+    text: "Profile",
+    name: "profile",
+  },
+];

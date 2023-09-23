@@ -45,10 +45,32 @@ const routes = [
     beforeEnter: requiredAuth,
   },
   {
+    path: "/report",
+    name: "report",
+    component: () =>
+      import(/* webpackChunkName: "report" */ "../views/report.vue"),
+    beforeEnter: requiredAuth,
+  },
+  {
+    path: "/budget",
+    name: "budget",
+    component: () =>
+      import(/* webpackChunkName: "budget" */ "../views/budget.vue"),
+    beforeEnter: requiredAuth,
+  },
+  {
     path: "/logout",
     name: "logout",
     component: () =>
       import(/* webpackChunkName: "logout" */ "../views/logout.vue"),
+  },
+  {
+    path: "/newtransaction",
+    name: "NewTransaction",
+    component: () =>
+      import(
+        /* webpackChunkName: "transaction" */ "../views/new-transaction.vue"
+      ),
   },
 ];
 
