@@ -14,7 +14,8 @@ const routes = [
     path: "/",
     name: "home",
     meta: {
-      layout: "default",
+      text: "Hey ABC",
+      leading: true,
     },
     component: () =>
       import(/* webpackChunkName: "home" */ "../views/index.vue"),
@@ -40,6 +41,10 @@ const routes = [
   {
     path: "/profile",
     name: "profile",
+    meta: {
+      text: "Profile",
+      leading: false,
+    },
     component: () =>
       import(/* webpackChunkName: "profile" */ "../views/profile.vue"),
     beforeEnter: requiredAuth,
@@ -66,7 +71,7 @@ const routes = [
   },
   {
     path: "/newtransaction",
-    name: "NewTransaction",
+    name: "newtransaction",
     component: () =>
       import(
         /* webpackChunkName: "transaction" */ "../views/new-transaction.vue"
