@@ -150,7 +150,7 @@
         <div class="bg-white rouded-lg py-4">
           <div class="container mx-auto px-8">
             <div class="row">
-              <label for="withPerson" class="flex items-center text-primary">
+              <label for="file" class="flex items-center text-primary">
                 <div class="flex-none w-10 mr-4">
                   <span class="flex items-center justify-end text-dark">
                     <i class="t2ico t2ico-camera text-2xl"></i>
@@ -158,12 +158,19 @@
                 </div>
                 <div class="flex-1 py-2">
                   <div class="w-full">Upload photo</div>
+                  <input
+                    id="file"
+                    type="file"
+                    class="w-0 h-0 absolute overflow-hideen"
+                    @click="onChangeFile"
+                  />
                 </div>
               </label>
             </div>
           </div>
         </div>
       </div>
+      <div class="text-red my-3" v-if="errorFile">{{ errorFile }}</div>
     </template>
     <button class="bg-primary" type="submit">Submit Go</button>
   </form>
@@ -182,6 +189,22 @@ export default {
     const category = ref("");
     const note = ref("");
     const time = ref(new Date());
+    const file = ref(null);
+    const errorFile = ref(null);
+
+    function onChangeFile(event) {
+      const selected = event.target.files[0];
+      const typesFile = ["image/png", "image/jpg"];
+      console.log(selected);
+
+      if (selected && typesFile.includes(selected.type)) {
+        file.value = selected;
+        errorFile.value = null;
+      } else {
+        file.value = null;
+        errorFile.value = "Please selected png/jpg file.";
+      }
+    }
     async function onSubmit() {
       const { user } = getUser();
       // console.log(user);
@@ -197,7 +220,16 @@ export default {
       console.log(error);
       console.log("Created");
     }
-    return { onSubmit, isMoreDetails, total, category, note, time };
+    return {
+      onChangeFile,
+      onSubmit,
+      isMoreDetails,
+      total,
+      category,
+      note,
+      time,
+      errorFile,
+    };
   },
 };
 </script>
