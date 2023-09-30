@@ -119,6 +119,7 @@
                     class="text-dark w-full outline-none"
                     type="text"
                     placeholder="Select a location"
+                    v-model="location"
                   />
                 </div>
               </label>
@@ -138,6 +139,7 @@
                     class="text-dark w-full outline-none"
                     type="text"
                     placeholder="with Person"
+                    v-model="person"
                   />
                 </div>
               </label>
@@ -162,7 +164,8 @@
                     id="file"
                     type="file"
                     class="w-0 h-0 absolute overflow-hideen"
-                    @click="onChangeFile"
+                    ref="file"
+                    @change="onChangeFile"
                   />
                 </div>
               </label>
@@ -179,24 +182,25 @@
 import { ref } from "vue";
 import { useUser } from "@/composables/useUser";
 import useCollection from "@/composables/useCollection";
-
+import useStorage from "@/composables/useStorage";
 export default {
   setup() {
     const isMoreDetails = ref(false);
     const { getUser } = useUser();
     const { error, addRecord } = useCollection("transactions");
+    const { uploadFile, url, filePath } = useStorage("transactions");
     const total = ref(0);
     const category = ref("");
     const note = ref("");
     const time = ref(new Date());
+    const location = ref("");
+    const person = ref("");
     const file = ref(null);
     const errorFile = ref(null);
 
     function onChangeFile(event) {
       const selected = event.target.files[0];
-      const typesFile = ["image/png", "image/jpg"];
-      console.log(selected);
-
+      const typesFile = ["image/png", "image/jpg", "image/jpeg"];
       if (selected && typesFile.includes(selected.type)) {
         file.value = selected;
         errorFile.value = null;
@@ -204,16 +208,24 @@ export default {
         file.value = null;
         errorFile.value = "Please selected png/jpg file.";
       }
+      // console.log(event);
     }
     async function onSubmit() {
+      if (file.value) {
+        await uploadFile(file.value);
+        console.log("File Path:", filePath._value);
+        console.log("URL file:", url._value);
+      }
       const { user } = getUser();
-      // console.log(user);
       const transaction = {
         total: parseInt(total.value),
-        category: parseInt(category.value),
+        category: category.value,
         note: note.value,
         time: time.value,
+        location: location.value,
+        person: person.value,
         userId: user.value.uid,
+        thumbnail: url._value,
       };
       console.log(transaction);
       await addRecord(transaction);
@@ -228,6 +240,8 @@ export default {
       category,
       note,
       time,
+      location,
+      person,
       errorFile,
     };
   },
