@@ -41,3 +41,6 @@ yarn add firebase
 # 12. Logout function
 # 13. UI for navigation bottom
 # 14. UI for navigation header
+# 15. Plus button
+# 16. Add new transaction to firebase
+# 17. Upload file to firebase
